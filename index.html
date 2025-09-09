@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AussiePharmacies - The Directory for Pharmacy Internships</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A; /* Slate 900 */
+        }
+        .hero-bg {
+            background-color: #000000;
+            background-image:
+                radial-gradient(at 47% 33%, hsl(210.00, 70%, 25%) 0, transparent 59%),
+                radial-gradient(at 82% 65%, hsl(285.71, 60%, 20%) 0, transparent 55%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .shiny-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .shiny-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: rotate(20deg);
+            transition: opacity 0.5s ease;
+            opacity: 0;
+        }
+        .shiny-btn:hover::after {
+            opacity: 1;
+            animation: shine 1.5s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(20deg); }
+            100% { transform: translateX(100%) rotate(20deg); }
+        }
+        .feature-card {
+             background: rgba(255, 255, 255, 0.02);
+             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-10 py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white">AussiePharmacies</h1>
+            <a href="#early-access" class="hidden md:inline-block bg-gray-800 text-white font-semibold py-2 px-5 rounded-lg hover:bg-gray-700 transition duration-300">Get Early Access</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-bg">
+        <div class="container mx-auto px-6 pt-24 pb-32 text-center">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-white">The Internship Search, Reimagined.</h2>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10">Discover, track, and connect with Australian pharmacies in one organized directory. Built for overseas interns.</p>
+            <div class="glass-card rounded-xl p-6 max-w-lg mx-auto" id="early-access">
+                <h3 class="text-xl font-bold text-white mb-4">Be the first to get access.</h3>
+                <!-- The form points to your FormEasy endpoint -->
+                <form action="https://script.google.com/macros/s/AKfycbyR-pHXXvhynRXYAJfWhAVUNxRRHx7lktBt6nNRI0chpmdFHalojyAoyiyxSTdCS2gn/exec" method="POST" class="space-y-4">
+                    <!-- The 'name' attributes must match your Google Sheet headers -->
+                    <input type="text" id="name" name="name" placeholder="Your Name" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500" required>
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 shiny-btn">Get Early Access</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Stop Searching. Start Organizing.</h2>
+                <p class="text-lg text-gray-400 mt-2">Go from a messy spreadsheet to a streamlined search.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card p-8 rounded-lg text-center">
+                     <div class="mb-4 inline-block p-4 bg-gray-800 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="text-blue-400" viewBox="0 0 16 16">
+                            <path d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                            <path d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Curated Directory</h3>
+                    <p class="text-gray-400">Access a comprehensive list of pharmacies across Australia. Search by location and specialty.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card p-8 rounded-lg text-center">
+                    <div class="mb-4 inline-block p-4 bg-gray-800 rounded-full">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="text-blue-400" viewBox="0 0 16 16">
+                            <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Direct Connection</h3>
+                    <p class="text-gray-400">Directly connect with pharmacies to inquire about available internship positions and opportunities.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card p-8 rounded-lg text-center">
+                    <div class="mb-4 inline-block p-4 bg-gray-800 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="text-blue-400" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-4 0V9H2v5h2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Organized Tracking</h3>
+                    <p class="text-gray-400">Keep track of your applications, conversations, and follow-ups all in one organized place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-900/50 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 AussiePharmacies. All rights reserved.</p>
+            <p class="text-sm mt-2">This is a concept page to gauge interest for a future service.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
