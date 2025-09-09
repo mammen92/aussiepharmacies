@@ -3,7 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AussiePharmacies - The Directory for Pharmacy Internships</title>
+
+    <!-- SEO Meta Tags -->
+    <title>AussiePharmacies | Pharmacy Internship Directory for Australia</title>
+    <meta name="description" content="The ultimate directory for overseas pharmacists to discover, track, and connect with pharmacies in Australia for internship opportunities. Streamline your search today.">
+    <link rel="canonical" href="https://www.aussiepharmacies.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aussiepharmacies.com/">
+    <meta property="og:title" content="AussiePharmacies | Pharmacy Internship Directory for Australia">
+    <meta property="og:description" content="The ultimate directory for overseas pharmacists to discover, track, and connect with pharmacies in Australia for internship opportunities. Streamline your search today.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0F172A/FFFFFF?text=AussiePharmacies&font=inter">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.aussiepharmacies.com/">
+    <meta property="twitter:title" content="AussiePharmacies | Pharmacy Internship Directory for Australia">
+    <meta property="twitter:description" content="The ultimate directory for overseas pharmacists to discover, track, and connect with pharmacies in Australia for internship opportunities. Streamline your search today.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/0F172A/FFFFFF?text=AussiePharmacies&font=inter">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚕️</text></svg>">
+
+    <!-- Styles and Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +97,6 @@
                 <div id="form-container">
                     <h3 class="text-xl font-bold text-white mb-4">Be the first to get access.</h3>
                     <form id="lead-form" class="space-y-4">
-                        <!-- The 'name' attributes must match your Google Sheet headers -->
                         <input type="text" id="name" name="name" placeholder="Your Name" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500" required>
                         <input type="email" id="email" name="email" placeholder="Your Email Address" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500" required>
                         <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 shiny-btn">Get Early Access</button>
@@ -145,10 +167,10 @@
         const successMessage = document.getElementById('success-message');
         
         // IMPORTANT: Replace this with your actual Google Apps Script URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyR-pHXXvhynRXYAJfWhAVUNxRRHx7lktBt6nNRI0chpmdFHalojyAoyiyxSTdCS2gn/exec';
+        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
         form.addEventListener('submit', e => {
-            e.preventDefault(); // Prevents the default form submission and page reload
+            e.preventDefault();
             
             const submitButton = form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
@@ -162,7 +184,6 @@
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    // Use a more user-friendly error message instead of alert()
                     const errorP = document.createElement('p');
                     errorP.textContent = 'Something went wrong. Please try again.';
                     errorP.className = 'text-red-400 mt-4';
