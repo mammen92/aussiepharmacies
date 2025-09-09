@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,14 +71,19 @@
             <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-white">The Internship Search, Reimagined.</h2>
             <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10">Discover, track, and connect with Australian pharmacies in one organized directory. Built for overseas interns.</p>
             <div class="glass-card rounded-xl p-6 max-w-lg mx-auto" id="early-access">
-                <h3 class="text-xl font-bold text-white mb-4">Be the first to get access.</h3>
-                <!-- The form points to your FormEasy endpoint -->
-                <form action="https://script.google.com/macros/s/AKfycbyR-pHXXvhynRXYAJfWhAVUNxRRHx7lktBt6nNRI0chpmdFHalojyAoyiyxSTdCS2gn/exec" method="POST" class="space-y-4">
-                    <!-- The 'name' attributes must match your Google Sheet headers -->
-                    <input type="text" id="name" name="name" placeholder="Your Name" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500" required>
-                    <input type="email" id="email" name="email" placeholder="Your Email Address" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500" required>
-                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 shiny-btn">Get Early Access</button>
-                </form>
+                <div id="form-container">
+                    <h3 class="text-xl font-bold text-white mb-4">Be the first to get access.</h3>
+                    <form id="lead-form" class="space-y-4">
+                        <!-- The 'name' attributes must match your Google Sheet headers -->
+                        <input type="text" id="name" name="name" placeholder="Your Name" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500" required>
+                        <input type="email" id="email" name="email" placeholder="Your Email Address" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500" required>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 shiny-btn">Get Early Access</button>
+                    </form>
+                </div>
+                 <div id="success-message" class="hidden text-center text-white py-8">
+                    <h3 class="text-2xl font-bold mb-2">Thank You!</h3>
+                    <p class="text-gray-300">You're on the list. We'll be in touch soon.</p>
+                </div>
             </div>
         </div>
     </main>
@@ -134,6 +138,41 @@
             <p class="text-sm mt-2">This is a concept page to gauge interest for a future service.</p>
         </div>
     </footer>
+
+    <script>
+        const form = document.getElementById('lead-form');
+        const formContainer = document.getElementById('form-container');
+        const successMessage = document.getElementById('success-message');
+        
+        // IMPORTANT: Replace this with your actual Google Apps Script URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyR-pHXXvhynRXYAJfWhAVUNxRRHx7lktBt6nNRI0chpmdFHalojyAoyiyxSTdCS2gn/exec';
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Prevents the default form submission and page reload
+            
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    console.log('Success!', response);
+                    formContainer.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    // Use a more user-friendly error message instead of alert()
+                    const errorP = document.createElement('p');
+                    errorP.textContent = 'Something went wrong. Please try again.';
+                    errorP.className = 'text-red-400 mt-4';
+                    formContainer.appendChild(errorP);
+
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Get Early Access';
+                });
+        });
+    </script>
 
 </body>
 </html>
